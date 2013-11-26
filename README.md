@@ -6,7 +6,7 @@ Thanks for checking out StayGolden! (and its quick'n'dirty readme)
 StayGolden is a pretty simple jQuery plugin built for the purpose of generating page layouts.  This is achieved by cycling through a series of sibling DOM elements and sizing them relative to their previous sibling using the golden ratio (1.618 for short).
 
 What in the heck is the golden ratio you say?  This wikipedia article describes the concept way better than I probably can:
-wikipedia.org/wiki/Golden_ratio
+(wikipedia.org/wiki/Golden_ratio)[wikipedia.org/wiki/Golden_ratio]
 
 TL;DR - The golden ratio is a cool proportion that a bunch of people think is aesthetically pleasing.
 
