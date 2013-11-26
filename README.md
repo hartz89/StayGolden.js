@@ -10,4 +10,7 @@ http://wikipedia.org/wiki/Golden_ratio
 
 TL;DR - The golden ratio is a cool proportion that a bunch of people think is aesthetically pleasing.
 
-Check out the demo and feel free to help improve the code or add new features!  One really nice-to-have but tricky-to-implement feature would be to allow users to choose different patterns in which to arrange the elements- snake (as it is now), spiral, etc.
+Check out the demo....
+http://hartz89.github.io/StayGolden.js/demo.html
+
+....and feel free to help improve the code or add new features!  One really nice-to-have but tricky-to-implement feature would be to allow users to choose different patterns in which to arrange the elements- snake (as it is now), spiral, etc.
