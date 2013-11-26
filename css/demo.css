@@ -32,13 +32,3 @@ body {
 #demoContent .golden.darkGrey {
   background-color: #333333;
 }
-/* stack on mobile */
-@media screen and (max-width: 767px) {
-  #demoContent {
-    overflow-y: auto!important;
-  }
-  #demoContent .golden {
-    width: 100%!important;
-    height: 100px;
-  }
-}
