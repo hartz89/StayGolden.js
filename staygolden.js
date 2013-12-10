@@ -12,53 +12,43 @@ var goldenRatio = 1.618;
         //hide the parent div until just before we are ready to go
         var parent = _this.parent().hide();
 
+
+        //build options object by merging default values with passed arguments
         // ARGUMENT delay - how long to wait before beginning the golden ratio rendering
-        var delay;
-        if (args.hasOwnProperty('delay')) {
-            if (typeof args.delay === 'string') {
-                if (args.delay === 'shorter') {
-                    delay = 125;
-                } else if (args.delay === 'short') {
-                    delay = 250;
-                } else if (args.delay === 'long') {
-                    delay = 750;
-                } else if (args.delay === 'longer') {
-                    delay = 1000;
-                } else if (args.delay === 'none') {
-                    delay = 1;
-                }
-            } else if (typeof args.delay === 'number') {
-                delay = args.delay;
-            }
-        } else {
-            delay = 1;
-        }
-
         // ARGUMENT speed - how quickly to perform the animations
-        var speed;
-        if (args.hasOwnProperty('speed')) {
-            if (typeof args.speed === 'string') {
-                if (args.speed === 'faster') {
-                    speed = 125;
-                } else if (args.speed === 'fast') {
-                    speed = 250;
-                } else if (args.speed === 'slow') {
-                    speed = 750;
-                } else if (args.speed === 'slower') {
-                    speed = 1000;
-                } else {
-                    console.log('makeGolden plugin encountered unexcepted value for argument "speed".  Set to default of 500ms');
-                }
-            } else if (typeof args.speed === 'number') {
-                speed = args.speed;
+        var options = $.extend({
+            delay : 1,
+            speed : 500,
+        }, args);
+
+        //convert acceptable string delays into millisecond delays
+        if (typeof options.delay === 'string') {
+            if (options.delay === 'shorter') {
+                options.delay = 125;
+            } else if (args.delay === 'short') {
+                options.delay = 250;
+            } else if (args.delay === 'long') {
+                options.delay = 750;
+            } else if (args.delay === 'longer') {
+                options.delay = 1000;
+            } else if (args.delay === 'none') {
+                options.delay = 1;
             }
-        } else {
-            speed = 500;
         }
-
-        // ARGUMENT eachDone - a function to execute on each of the processed elements
-        if (args.hasOwnProperty('eachDone')) {
-
+        
+        //convert acceptable string speeds into millisecond animation durations
+        if (typeof options.speed === 'string') {
+            if (options.speed === 'faster') {
+                options.speed = 125;
+            } else if (options.speed === 'fast') {
+                options.speed = 250;
+            } else if (options.speed === 'slow') {
+                options.speed = 750;
+            } else if (options.speed === 'slower') {
+                options.speed = 1000;
+            } else {
+                console.log('makeGolden plugin encountered unexcepted value for argument "speed".  Set to default of 500ms');
+            }
         }
 
         setTimeout(function() {
@@ -112,13 +102,13 @@ var goldenRatio = 1.618;
                 // are performing an asynchronous action inside of a repetition structure. After a short delay, trigger
                 // a fadeIn effect on each subsequent element and call our callback if necessary
                 (function(elemToShow, counter) {
-                    var delay = counter * speed + 1;
+                    var delay = counter * options.speed + 1;
                     setTimeout(
                         function() {
                             if (args.hasOwnProperty('eachDone') && typeof args.eachDone === 'function') {
-                                elemToShow.fadeIn(speed, args.eachDone);
+                                elemToShow.fadeIn(options.speed, args.eachDone);
                             } else {
-                                elemToShow.fadeIn(speed);
+                                elemToShow.fadeIn(options.speed);
                             }
                             
                         }, delay
@@ -137,7 +127,7 @@ var goldenRatio = 1.618;
             }
 
             return this;
-        }, delay);
+        }, options.delay);
     };
 
     $.fn.fitToWindow = function() {
